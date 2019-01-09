@@ -1,7 +1,3 @@
-# Temporarily add this repo's Maple to the module path.
-# Do not use this if you installed Maple using Pkg.clone.
-push!(LOAD_PATH, "$(pwd())/src")
-
 using Maple
 
 lvl_1_fg = """
@@ -65,7 +61,7 @@ println("Map type")
     # (Maple does not include these)
     Style(
         Styleground([
-            SnowFg()
+            SnowFg(Dict{String, Any}("only" => "*"))
         ]),
     
         Styleground([
@@ -119,4 +115,4 @@ println("Map type")
 )
 
 println("Total encode time")
-@time encodeMap(map, "../ModContent/Maps/$(map.package).bin")
+@time encodeMap(map, "./$(map.package).bin")

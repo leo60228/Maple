@@ -1,0 +1,6 @@
+println("Running map test")
+include("./example_map.jl")
+println("Running entity test")
+include("./example_entity_map.jl")
+println("Running style test")
+include("./example_styled_map.jl")

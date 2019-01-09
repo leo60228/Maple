@@ -67,7 +67,7 @@ blacklistedRoomAttrs = String["position", "size", "color", "fgDecals", "bgDecals
 function Base.Dict(r::Room)
     res = Dict{String, Any}()
 
-    for f in fieldnames(r)
+    for f in fieldnames(typeof(r))
         fs = String(f)
         value = getfield(r, f)
 

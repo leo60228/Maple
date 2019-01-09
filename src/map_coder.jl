@@ -127,7 +127,7 @@ function encodeValue(buffer::IOBuffer, key::String, value::AbstractFloat, lookup
 end
 
 function encodeValue(buffer::IOBuffer, key::String, value::String, lookup::Array{String, 1})
-  index = findfirst(lookup, value) - 1
+  index = something(findfirst(isequal(value), lookup), 0) - 1
 
   if index < 0
     if key == "innerText"
@@ -256,11 +256,11 @@ function encodeValue(buffer::IOBuffer, element::Dict{String, Any}, lookup::Array
   attributes = getAttributeNames(element)
   children = get(element, "__children", Dict{String, Any}[])
 
-  write(buffer, UInt16(findfirst(lookup, element["__name"]) - 1))
+  write(buffer, UInt16(something(findfirst(isequal(element["__name"]), lookup), 0) - 1))
   write(buffer, UInt8(length(keys(attributes))))
 
   for (attr, value) in attributes
-    write(buffer, UInt16(findfirst(lookup, attr) - 1))
+    write(buffer, UInt16(something(findfirst(isequal(attr), lookup), 0) - 1))
     encodeValue(buffer, attr, value, lookup)
   end
 

@@ -1,7 +1,3 @@
-# Temporarily add this repo's Maple to the module path.
-# Do not use this if you installed Maple using Pkg.clone.
-push!(LOAD_PATH, "$(pwd())/src")
-
 using Maple
 
 # '0' and ' ' will be confidered "nothing"
@@ -50,7 +46,7 @@ println("Map type")
                 Player(16, 144),
                 ChapterCheckpoint(16, 144),
 
-                CustomMemorial(160, 160, true, "memorial_test", "decals/playerR"),
+                EverestMemorial(160, 160, true, "memorial_test", "decals/playerR"),
             ],
         )
     ]

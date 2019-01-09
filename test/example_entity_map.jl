@@ -1,7 +1,3 @@
-# Temporarily add this repo's Maple to the module path.
-# Do not use this if you installed Maple using Pkg.clone.
-push!(LOAD_PATH, "$(pwd())/src")
-
 using Maple
 
 # See top dictionary in `entity_map.jl` for currently implemented shorthands

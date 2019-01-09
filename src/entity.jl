@@ -81,7 +81,7 @@ Feather(x::Integer, y::Integer, shielded::Bool=false, singleUse::Bool=false) = E
 
 # Everest needs null values here for automatic fills
 # Inventory and Dreaming has to be nullable, -1 for checkpointID is considered null
-ChapterCheckpoint(x::Integer, y::Integer, inventory::Union{String, Void}=nothing, dreaming::Union{Bool, Void}=nothing, checkpointID::Integer=-1; allowOrigin::Bool=false) = Entity("checkpoint", x=x, y=y, allowOrigin=allowOrigin, inventory=inventory, dreaming=dreaming, checkpointID=checkpointID)
+ChapterCheckpoint(x::Integer, y::Integer, inventory::Union{String, Nothing}=nothing, dreaming::Union{Bool, Nothing}=nothing, checkpointID::Integer=-1; allowOrigin::Bool=false) = Entity("checkpoint", x=x, y=y, allowOrigin=allowOrigin, inventory=inventory, dreaming=dreaming, checkpointID=checkpointID)
 
 Checkpoint(x::Integer, y::Integer, number::Integer=0) = Entity("summitcheckpoint", x=x, y=y, number=number)
 

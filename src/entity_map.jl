@@ -126,12 +126,12 @@ function entityMap(tiles::Array{Char, 2}, lookup::Dict{Char, Function}=default_e
 
             if !complete[y, x] && haskey(lookup, v)
                 func = lookup[v]
-                offset = haskey(entity_offsets, func)? entity_offsets[func] : (0, 0)
+                offset = haskey(entity_offsets, func) ? entity_offsets[func] : (0, 0)
 
-                searchWidth, searchHeight = haskey(search_for_size, func)? search_for_size[func] : (false, false)
+                searchWidth, searchHeight = haskey(search_for_size, func) ? search_for_size[func] : (false, false)
                 tileWidth, tileHeight = searchSize(tiles, x, y, searchWidth, searchHeight)
 
-                complete[y:y + tileHeight - 1, x:x + tileWidth - 1] = true
+                complete[y + tileHeight - 1, x + tileWidth - 1] = true
 
                 if !searchWidth && !searchHeight
                     push!(res, func(x * 8 + offset[1] - 8, y * 8 + offset[2] - 8))

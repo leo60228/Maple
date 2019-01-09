@@ -98,7 +98,7 @@ mutable struct Tiles
     Tiles(d::Array{Char, 2}) = new(d)
 
     function Tiles(s::String)
-        s = chomp(replace(s, "\r\n", "\n"))
+        s = chomp(replace(s, "\r\n" => "\n"))
         lines = split(s, "\n")
 
         cols = maximum(length.(lines))
@@ -117,7 +117,7 @@ end
 # Removes illegal characters from the tileset
 # Makes it possible to put simple entity map and fg in same string
 function FgTiles(tiles::Tiles, valid::Array{Char, 1}=valid_fg_tiles)
-    tiles.data = [c in valid? c : '0' for c in tiles.data]
+    tiles.data = [c in valid ? c : '0' for c in tiles.data]
 
     return tiles
 end

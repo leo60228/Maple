@@ -2,7 +2,7 @@
 # These are the constant fields in the class and they seem to be correct
 module Songs
 macro songnames(s::Symbol, expr::Expr)
-    return Expr(:block, esc(:($s = $expr)), [esc(:($(parse(k)) = $v)) for (k, v) in eval(expr)]...)
+    return Expr(:block, esc(:($s = $expr)), [esc(:($(Meta.parse(k)) = $v)) for (k, v) in eval(expr)]...)
 end
 
 @songnames(songs, Dict{String, String}(

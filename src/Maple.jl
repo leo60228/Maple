@@ -2,7 +2,7 @@ __precompile__()
 
 module Maple
 macro exportalltypes()
-    return Expr(:export, filter(val -> match(r"#|@|(^[a-z])", string(val)) === nothing, names(Maple, true))...)
+    return Expr(:export, filter(val -> match(r"#|@|(^[a-z])", string(val)) === nothing, names(Maple, all=true))...)
 end
 
 include("metadata.jl")
